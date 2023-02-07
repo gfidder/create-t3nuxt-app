@@ -1,0 +1,58 @@
+{
+  "name": "@ct3na/root",
+  "version": "0.0.0",
+  "description": "Quickest way to start a new Nuxt web app with full stack typesafety",
+  "author": "Gabriel Fidder <gabfid@gmail.com.com>",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gfidder/create-t3nuxt-app.git"
+  },
+  "keywords": [
+    "create-t3nuxt-app",
+    "nuxt",
+    "t3-stack",
+    "tailwind",
+    "tRPC",
+    "typescript"
+  ],
+  "engines": {
+    "node": ">=14.16"
+  },
+  "packageManager": "pnpm@7.13.0",
+  "scripts": {
+    "typecheck": "turbo typecheck",
+    "build:cli": "turbo --filter=create-t3-nuxt build",
+    "build:www": "turbo --filter=www build",
+    "build": "turbo build",
+    "start:cli": "turbo --filter=create-t3-nuxt start",
+    "start:www": "turbo --filter=www start",
+    "dev:cli": "turbo --filter=create-t3-nuxt dev",
+    "dev:www": "turbo --filter=www dev",
+    "clean": "turbo clean && rm -rf node_modules",
+    "lint": "turbo lint",
+    "format": "turbo format && prettier --write *.{cjs,md,json}",
+    "format:check": "turbo format:check && prettier --check *.{cjs,md,json}",
+    "check": "turbo lint typecheck format:check && manypkg check",
+    "release": "changeset version",
+    "pub:beta": "cd cli && pnpm pub:beta",
+    "pub:release": "cd cli && pnpm pub:release"
+  },
+  "dependencies": {
+    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/cli": "^2.26.0",
+    "@manypkg/cli": "^0.20.0",
+    "@types/node": "^18.13.0",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "eslint": "^8.33.0",
+    "eslint-config-isaacscript": "^3.3.1",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-turbo": "^0.0.7",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.3",
+    "turbo": "^1.7.3",
+    "typescript": "^4.9.5"
+  }
+}

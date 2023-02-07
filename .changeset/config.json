@@ -1,0 +1,15 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
+  "changelog": [
+    "@changesets/cli/changelog",
+    {"repo": "gfidder/create-t3nuxt-app"}
+  ],
+  "commit": false,
+  "fixed": [],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": ["@ct3na/www"],
+  "changedFilePatterns": ["src/**", "template/**"]
+}

@@ -1,0 +1,31 @@
+{
+  "pipeline": {
+    "clean": {},
+    "build": {
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "start": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "lint": {
+      "outputs": [
+        ".eslintcache"
+      ]
+    },
+    "format": {},
+    "format:check": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false
+    },
+    "typecheck": {}
+  }
+}

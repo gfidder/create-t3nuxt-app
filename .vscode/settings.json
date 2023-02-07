@@ -1,0 +1,24 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.rulers": [
+    100
+  ],
+  "editor.tabSize": 2,
+  "eslint.rules.customizations": [
+    {
+      "rule": "*",
+      "severity": "warn"
+    }
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "prettier.documentSelectors": [
+    "**/*.{cjs,mjs,ts,tsx,astro,md,mdx,json,yaml,yml}"
+  ],
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  }
+}
