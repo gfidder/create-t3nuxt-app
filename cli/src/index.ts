@@ -1,1 +1,1 @@
-import type {PackageJson} from "type-fest"
+import type { PackageJson } from "type-fest";
