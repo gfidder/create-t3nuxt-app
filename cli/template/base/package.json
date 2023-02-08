@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint . --ext .vue,.js,.ts,.tsx --ignore-path .gitignore"
   },
   "devDependencies": {
     "@types/node": "^18.13.0",
