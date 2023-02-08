@@ -2,22 +2,14 @@
   "pipeline": {
     "clean": {},
     "build": {
-      "outputs": [
-        "dist/**"
-      ],
-      "dependsOn": [
-        "^build"
-      ]
+      "outputs": ["dist/**"],
+      "dependsOn": ["^build"]
     },
     "start": {
-      "dependsOn": [
-        "^build"
-      ]
+      "dependsOn": ["^build"]
     },
     "lint": {
-      "outputs": [
-        ".eslintcache"
-      ]
+      "outputs": [".eslintcache"]
     },
     "format": {},
     "format:check": {
