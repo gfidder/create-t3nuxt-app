@@ -1,0 +1,51 @@
+---
+import Footer from "../components/footer/footer.astro";
+import "../styles/global.css";
+import "../styles/algolia/style.css";
+import "../styles/accessibility.css";
+import HeadCommon from "../components/headCommon.astro";
+import { SITE } from "../config";
+
+import "@fontsource/inter/variable.css";
+import JumpToContent from "../components/accessibility/jumpToContent.astro";
+
+export interface Props {
+  isNotFound?: boolean;
+}
+
+// const currentPage = Astro.url.pathname;
+
+const { isNotFound } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en-us" class={`initial ${isNotFound ? "not-found" : ""}`}>
+  <head>
+    <HeadCommon />
+    <title>{SITE.title}</title>
+
+    <script is:inline>
+      const html = document.documentElement;
+      if (
+        window.location.pathname === "/" ||
+        html.classList.contains("not-found")
+      ) {
+        html.classList.remove("not-found");
+        html.classList.add("dark");
+      }
+    </script>
+  </head>
+  <body
+    class="min-h-screen bg-gradient-to-b from-gray-900 via-[#300171] to-slate-900"
+  >
+    <JumpToContent />
+    <div
+      class="relative before:pointer-events-none before:absolute before:inset-0 before:block before:h-full before:w-full before:bg-[url('/images/background-pattern.svg')] before:bg-cover before:bg-no-repeat before:opacity-5"
+    >
+      <main id="content">
+        <slot />
+      </main>
+      <Footer isBlog={false} path="/" />
+    </div>
+  </body>
+</html>
