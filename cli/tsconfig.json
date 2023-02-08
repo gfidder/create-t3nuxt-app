@@ -3,14 +3,9 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "~/*": [
-        "./src/*"
-      ]
+      "~/*": ["./src/*"]
     },
     "checkJs": true
   },
-  "include": [
-    "src",
-    ".eslintrc.cjs"
-  ]
+  "include": ["src", ".eslintrc.cjs"]
 }
