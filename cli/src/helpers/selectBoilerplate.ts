@@ -53,12 +53,38 @@ export const selectIndexFile = ({
   } else if (usingTRPC && !usingTw) {
     indexFile = "with-trpc.tsx";
   } else if (!usingTRPC && usingTw) {
-    indexFile = "with-tw.tsx";
+    indexFile = "with-tw.vue";
   }
 
   if (indexFile !== "") {
     const indexSrc = path.join(indexFileDir, indexFile);
-    const indexDest = path.join(projectDir, "src/pages/index.tsx");
+    const indexDest = path.join(projectDir, "pages/index.vue");
     fs.copySync(indexSrc, indexDest);
+  }
+};
+
+// This selects the proper nuxt.config.ts to be used that showcases the chosen tech
+export const selectNuxtConfigFile = ({
+  projectDir,
+  packages,
+}: SelectBoilerplateProps) => {
+  const configFileDir = path.join(
+    PKG_ROOT,
+    "template/extras/config/nuxt-config",
+  );
+
+  // const usingTRPC = packages.trpc.inUse;
+  const usingTw = packages.tailwind.inUse;
+  // const usingAuth = packages.nextAuth.inUse;
+
+  let nuxtConfig = "";
+  if (usingTw) {
+    nuxtConfig = "with-tw.ts";
+  }
+
+  if (nuxtConfig !== "") {
+    const configSrc = path.join(configFileDir, nuxtConfig);
+    const configDest = path.join(projectDir, "nuxt.config.ts");
+    fs.copySync(configSrc, configDest);
   }
 };

@@ -140,8 +140,8 @@ export const runCli = async () => {
   if (cliResults.flags.CI) {
     CIMode = true;
     cliResults.packages = [];
-    // if (cliResults.flags.trpc) cliResults.packages.push("trpc");
-    // if (cliResults.flags.tailwind) cliResults.packages.push("tailwind");
+    if (cliResults.flags.trpc) cliResults.packages.push("trpc");
+    if (cliResults.flags.tailwind) cliResults.packages.push("tailwind");
     if (cliResults.flags.prisma) cliResults.packages.push("prisma");
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
   }
@@ -155,7 +155,6 @@ export const runCli = async () => {
         cliResults.appName = await promptAppName();
       }
 
-      await promptLanguage();
       cliResults.packages = await promptPackages();
       if (!cliResults.flags.noGit) {
         cliResults.flags.noGit = !(await promptGit());
@@ -195,25 +194,6 @@ const promptAppName = async (): Promise<string> => {
   });
 
   return appName;
-};
-
-const promptLanguage = async (): Promise<void> => {
-  const { language } = await inquirer.prompt<{ language: string }>({
-    name: "language",
-    type: "list",
-    message: "Will you be using TypeScript or JavaScript?",
-    choices: [
-      { name: "TypeScript", value: "typescript", short: "TypeScript" },
-      { name: "JavaScript", value: "javascript", short: "JavaScript" },
-    ],
-    default: "typescript",
-  });
-
-  if (language === "javascript") {
-    logger.error("Wrong answer, using TypeScript instead...");
-  } else {
-    logger.success("Good choice! Using TypeScript!");
-  }
 };
 
 const promptPackages = async (): Promise<AvailablePackages[]> => {

@@ -23,11 +23,10 @@ jobs:
     strategy:
       matrix:
         # trpc: ["true", "false"]
-        # tailwind: ["true", "false"]
+        tailwind: ["true", "false"]
         # nextAuth: ["true", "false"]
         # prisma: ["true", "false"]
         trpc: ["false"]
-        tailwind: ["false"]
         nextAuth: ["false"]
         prisma: ["false"]
 
