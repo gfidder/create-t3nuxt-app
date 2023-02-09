@@ -19,14 +19,18 @@ useHead({
 <template>
   <main class="main">
     <div class="container">
-      <h1 class="title">Create <span class="pinkSpan">T3</span> App</h1>
+      <h1 class="title">
+        Create <span class="pinkSpan">T3</span> App
+      </h1>
       <div class="cardRow">
         <NuxtLink
           class="card"
           href="https://create.t3.gg/en/usage/first-steps"
           target="_blank"
         >
-          <h3 class="cardTitle">First Steps →</h3>
+          <h3 class="cardTitle">
+            First Steps →
+          </h3>
           <div class="cardText">
             Just the basics - Everything you need to know to set up your
             database and authentication.
@@ -37,7 +41,9 @@ useHead({
           href="https://create.t3.gg/en/introduction"
           target="_blank"
         >
-          <h3 class="cardTitle">Documentation →</h3>
+          <h3 class="cardTitle">
+            Documentation →
+          </h3>
           <div class="cardText">
             Learn more about Create T3 App, the libraries it uses, and how to
             deploy it.
