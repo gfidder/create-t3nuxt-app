@@ -2,11 +2,7 @@ import type { PkgInstallerMap } from "~/installers/index.js";
 import path from "path";
 import { installPackages } from "./installPackages.js";
 import { scaffoldProject } from "./scaffoldProject.js";
-import {
-  selectAppFile,
-  selectIndexFile,
-  selectNuxtConfigFile,
-} from "./selectBoilerplate.js";
+import { selectIndexFile, selectNuxtConfigFile } from "./selectBoilerplate.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 
 interface CreateProjectOptions {
@@ -40,7 +36,6 @@ export const createProject = async ({
   });
 
   // TODO: Look into using handlebars or other templating engine to scaffold without needing to maintain multiple copies of the same file
-  selectAppFile({ projectDir, packages });
   selectIndexFile({ projectDir, packages });
   selectNuxtConfigFile({ projectDir, packages });
 

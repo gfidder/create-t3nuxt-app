@@ -22,11 +22,10 @@ jobs:
     #   contains(github.event.pull_request.labels.*.name, '📌 area: t3-app')
     strategy:
       matrix:
-        # trpc: ["true", "false"]
+        trpc: ["true", "false"]
         tailwind: ["true", "false"]
         # nextAuth: ["true", "false"]
         # prisma: ["true", "false"]
-        trpc: ["false"]
         nextAuth: ["false"]
         prisma: ["false"]
 

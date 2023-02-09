@@ -24,7 +24,10 @@ export const addPackageDependency = (opts: {
     if (devMode) {
       pkgJson.devDependencies![pkgName] = version;
     } else {
-      pkgJson.dependencies![pkgName] = version;
+      if (pkgJson.dependencies === undefined) {
+        pkgJson.dependencies = {};
+      }
+      pkgJson.dependencies[pkgName] = version;
     }
   });
   const sortedPkgJson = sortPackageJson(pkgJson);
