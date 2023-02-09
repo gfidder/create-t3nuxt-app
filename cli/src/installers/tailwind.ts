@@ -14,6 +14,7 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
       "prettier",
       "prettier-plugin-tailwindcss",
       "@types/prettier",
+      "@nuxtjs/tailwindcss",
     ],
     devMode: true,
   });
@@ -29,15 +30,11 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
   const prettierSrc = path.join(extrasDir, "config/prettier.config.cjs");
   const prettierDest = path.join(projectDir, "prettier.config.cjs");
 
-  const cssSrc = path.join(extrasDir, "src/styles/globals.css");
-  const cssDest = path.join(projectDir, "src/styles/globals.css");
+  const cssSrc = path.join(extrasDir, "src/assets/global.css");
+  const cssDest = path.join(projectDir, "assets/global.css");
 
   fs.copySync(twCfgSrc, twCfgDest);
   fs.copySync(postcssCfgSrc, postcssCfgDest);
   fs.copySync(cssSrc, cssDest);
   fs.copySync(prettierSrc, prettierDest);
-
-  // Remove vanilla css file
-  const indexModuleCss = path.join(projectDir, "src/pages/index.module.css");
-  fs.unlinkSync(indexModuleCss);
 };

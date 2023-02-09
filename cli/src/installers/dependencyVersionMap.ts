@@ -18,6 +18,7 @@ export const dependencyVersionMap = {
   prettier: "^2.8.1",
   "prettier-plugin-tailwindcss": "^0.2.1",
   "@types/prettier": "^2.7.2",
+  "@nuxtjs/tailwindcss": "^6.3.1",
 
   // tRPC
   "@trpc/client": "^10.9.0",
