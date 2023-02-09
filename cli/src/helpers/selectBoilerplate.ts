@@ -73,9 +73,9 @@ export const selectNuxtConfigFile = ({
     "template/extras/config/nuxt-config",
   );
 
-  const usingTRPC = packages.trpc.inUse;
+  // const usingTRPC = packages.trpc.inUse;
   const usingTw = packages.tailwind.inUse;
-  const usingAuth = packages.nextAuth.inUse;
+  // const usingAuth = packages.nextAuth.inUse;
 
   let nuxtConfig = "";
   if (usingTw) {
