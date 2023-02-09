@@ -6,7 +6,6 @@ import {
   AvailableDependencies,
 } from "~/installers/dependencyVersionMap.js";
 import sortPackageJson from "sort-package-json";
-import { logger } from "./logger.js";
 
 export const addPackageDependency = (opts: {
   dependencies: AvailableDependencies[];
