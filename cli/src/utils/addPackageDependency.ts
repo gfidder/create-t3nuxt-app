@@ -6,6 +6,7 @@ import {
   AvailableDependencies,
 } from "~/installers/dependencyVersionMap.js";
 import sortPackageJson from "sort-package-json";
+import { logger } from "./logger.js";
 
 export const addPackageDependency = (opts: {
   dependencies: AvailableDependencies[];
@@ -24,7 +25,10 @@ export const addPackageDependency = (opts: {
     if (devMode) {
       pkgJson.devDependencies![pkgName] = version;
     } else {
-      pkgJson.dependencies![pkgName] = version;
+      if (pkgJson.dependencies === undefined) {
+        pkgJson.dependencies = {};
+      }
+      pkgJson.dependencies[pkgName] = version;
     }
   });
   const sortedPkgJson = sortPackageJson(pkgJson);

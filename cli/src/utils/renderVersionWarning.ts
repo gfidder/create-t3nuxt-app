@@ -9,7 +9,7 @@ export const renderVersionWarning = (npmVersion: string) => {
   //   console.log("npm", npmVersion);
 
   if (currentVersion.includes("beta")) {
-    logger.warn("  You are using a beta version of create-t3-app.");
+    logger.warn("  You are using a beta version of create-t3nuxt-app.");
     logger.warn("  Please report any bugs you encounter.");
   } else if (currentVersion.includes("next")) {
     logger.warn(
@@ -17,7 +17,7 @@ export const renderVersionWarning = (npmVersion: string) => {
     );
     logger.warn("  Please run the CLI with @latest instead.");
   } else if (currentVersion !== npmVersion) {
-    logger.warn("  You are using an outdated version of create-t3-app.");
+    logger.warn("  You are using an outdated version of create-t3nuxt-app.");
     logger.warn(
       "  Your version:",
       currentVersion + ".",
@@ -46,7 +46,7 @@ function checkForLatestVersion(): Promise<string> {
   return new Promise((resolve, reject) => {
     https
       .get(
-        "https://registry.npmjs.org/-/package/create-t3-app/dist-tags",
+        "https://registry.npmjs.org/-/package/create-t3nuxt-app/dist-tags",
         (res) => {
           if (res.statusCode === 200) {
             let body = "";
