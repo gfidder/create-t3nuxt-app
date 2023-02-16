@@ -1,7 +1,9 @@
 ---
 import { getIsRtlFromUrl } from "../../languages";
-import { Frontmatter, SIDEBAR, SIDEBAR_HEADER_MAP } from "../../config";
-import Search from "./Search";
+import { Frontmatter, SIDEBAR } from "../../config";
+// import { Frontmatter, SIDEBAR, SIDEBAR_HEADER_MAP } from "../../config";
+// import Search from "./Search";
+
 export interface Props {
   frontmatter?: Frontmatter;
   currentPage: string;
@@ -17,36 +19,36 @@ const currentPageMatch = currentPage.slice(
 const isRtl = getIsRtlFromUrl(currentPage);
 const langCode = frontmatter?.lang ?? "en";
 const englishSidebar = SIDEBAR["en"];
-const nativeSidebar = SIDEBAR[langCode];
+// const nativeSidebar = SIDEBAR[langCode];
 let sidebar: Record<
   string,
   { text: string; link: string; isTranslated?: boolean }[]
 > = englishSidebar;
-if (langCode !== "en") {
-  sidebar = Object.fromEntries(
-    Object.entries(englishSidebar).map(([header, items]) => {
-      // Set header to translated one if it exists
-      const innerHeader = SIDEBAR_HEADER_MAP[langCode];
-      const nativeHeader =
-        innerHeader[header as keyof typeof innerHeader] ?? header;
-      const nativeItems = items.map((item) => {
-        const match = Object.values(nativeSidebar)
-          .flat()
-          .find(
-            ({ link: nativeLink }) =>
-              // trailing slash + language code
-              nativeLink.slice(langCode.length + 1) === item.link.slice(3),
-          );
-        return {
-          text: match?.text ?? item.text,
-          link: match?.link ?? item.link,
-          isTranslated: !!match,
-        };
-      });
-      return [nativeHeader, nativeItems];
-    }),
-  );
-}
+// if (langCode !== "en") {
+//   sidebar = Object.fromEntries(
+//     Object.entries(englishSidebar).map(([header, items]) => {
+//       // Set header to translated one if it exists
+//       const innerHeader = SIDEBAR_HEADER_MAP[langCode];
+//       const nativeHeader =
+//         innerHeader[header as keyof typeof innerHeader] ?? header;
+//       const nativeItems = items.map((item) => {
+//         const match = Object.values(nativeSidebar)
+//           .flat()
+//           .find(
+//             ({ link: nativeLink }) =>
+//               // trailing slash + language code
+//               nativeLink.slice(langCode.length + 1) === item.link.slice(3),
+//           );
+//         return {
+//           text: match?.text ?? item.text,
+//           link: match?.link ?? item.link,
+//           isTranslated: !!match,
+//         };
+//       });
+//       return [nativeHeader, nativeItems];
+//     }),
+//   );
+// }
 ---
 
 <div class="mx-auto ml--40 mb-6 w-full px-6 md:ml-0 md:hidden md:px-8">

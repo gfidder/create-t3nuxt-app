@@ -1,9 +1,10 @@
 ---
-import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
+import { getIsRtlFromUrl } from "../../languages";
+// import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
 import GithubIcon from "./githubIcon.astro";
-import Search from "./Search";
-import LanguageSelect from "./LanguageSelect";
-import SidebarToggle from "./sidebarToggle.astro";
+// import Search from "./Search";
+// import LanguageSelect from "./LanguageSelect";
+// import SidebarToggle from "./sidebarToggle.astro";
 import ThemeToggleButton from "./themeToggleButton.astro";
 export interface Props {
   isNotFound?: boolean;
@@ -14,7 +15,7 @@ const isLtr = !isRtl;
 const isLanding = pathname === "/" || !!Astro.props.isNotFound;
 const hasTrailing = pathname.endsWith("/");
 const currentPage = pathname.slice(0, hasTrailing ? -1 : pathname.length);
-const langCode = getLanguageFromURL(pathname);
+// const langCode = getLanguageFromURL(pathname);
 const navbarLinks: Array<{ href: string; label: string }> = [
   {
     href: "/en/introduction",
