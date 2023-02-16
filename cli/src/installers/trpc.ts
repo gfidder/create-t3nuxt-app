@@ -42,9 +42,6 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
   const rootRouterSrc = path.join(extrasDir, "src/server/trpc/root.ts");
   const rootRouterDest = path.join(projectDir, "server/trpc/root.ts");
 
-  const contextSrc = path.join(extrasDir, "src/server/trpc/context.ts");
-  const contextDest = path.join(projectDir, "server/trpc/context.ts");
-
   const exampleRouterFile =
     usingAuth && usingPrisma
       ? "with-auth-prisma.ts"
@@ -68,6 +65,5 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
   fs.copySync(pluginsSrc, pluginsDest);
   fs.copySync(trpcSrc, trpcDest);
   fs.copySync(rootRouterSrc, rootRouterDest);
-  fs.copySync(contextSrc, contextDest);
   fs.copySync(exampleRouterSrc, exampleRouterDest);
 };
