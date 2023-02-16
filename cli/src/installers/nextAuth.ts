@@ -7,10 +7,17 @@ import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
 export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
   const usingPrisma = packages?.prisma.inUse;
-  const deps: AvailableDependencies[] = ["@sidebase/nuxt-auth"];
+  const devDeps: AvailableDependencies[] = ["@sidebase/nuxt-auth"];
+  const deps: AvailableDependencies[] = ["next-auth"];
   if (usingPrisma) {
     deps.push("@next-auth/prisma-adapter");
   }
+
+  addPackageDependency({
+    projectDir,
+    dependencies: devDeps,
+    devMode: true,
+  });
 
   addPackageDependency({
     projectDir,

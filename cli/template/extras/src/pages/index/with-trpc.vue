@@ -176,9 +176,7 @@ const hello = await $client.example.hello.useQuery({ text: "from tRPC" });
   align-items: center;
   gap: 0.5rem;
 }
-</style>
 
-<style>
 .showcaseText {
   color: white;
   text-align: center;

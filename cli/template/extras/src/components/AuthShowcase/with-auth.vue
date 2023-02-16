@@ -1,19 +1,24 @@
 <script setup lang="ts">
-const { getSession, signIn, signOut } = useSession();
+const { data: sessionData, status, signIn, signOut } = useSession();
+const { $client } = useNuxtApp();
 
-const session = await getSession();
+const { data: secretMessage } =
+  await $client.example.getSecretMessage.useQuery();
 </script>
 
 <template>
   <div class="authContainer">
     <p class="showcaseText">
-      <span v-if="session">Logged in as {{ session.user?.name }}</span>
+      <span v-if="status === 'authenticated'"
+        >Logged in as {{ sessionData?.user?.name }}</span
+      >
+      <span v-if="secretMessage"> - {{ secretMessage }}</span>
     </p>
     <button
       class="loginButton"
-      @click="session ? () => void signOut() : () => void signIn()"
+      @click="status === 'authenticated' ? signOut() : signIn()"
     >
-      {{ session ? "Sign out" : "Sign in" }}
+      {{ status === "authenticated" ? "Sign out" : "Sign in" }}
     </button>
   </div>
 </template>

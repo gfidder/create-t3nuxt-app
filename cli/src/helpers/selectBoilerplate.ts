@@ -19,7 +19,9 @@ export const selectIndexFile = ({
   const usingAuth = packages.nextAuth.inUse;
 
   let indexFile = "";
-  if (usingTRPC && usingAuth) {
+  if (usingTRPC && usingAuth && usingTw) {
+    indexFile = "with-auth-trpc.vue";
+  } else if (usingTRPC && usingAuth && !usingTw) {
     indexFile = "with-auth-trpc.vue";
   } else if (usingTRPC && usingTw) {
     indexFile = "with-trpc-tw.vue";

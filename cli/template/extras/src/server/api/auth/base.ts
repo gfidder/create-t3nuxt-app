@@ -13,7 +13,8 @@ export default NuxtAuthHandler({
     },
   },
   providers: [
-    DiscordProvider({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    DiscordProvider.default({
       clientId: process.env.DISCORD_CLIENT_ID,
       clientSecret: process.env.DISCORD_CLIENT_SECRET,
     }),
