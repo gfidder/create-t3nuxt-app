@@ -7,8 +7,8 @@ export interface Props {
 }
 const { path } = Astro.props;
 const resolvedPath = `www/${path}`;
-const url = `https://api.github.com/repos/t3-oss/create-t3-app/commits?path=${resolvedPath}`;
-const commitsURL = `https://github.com/t3-oss/create-t3-app/commits/next/${resolvedPath}`;
+const url = `https://api.github.com/repos/gfidder/create-t3nuxt-app/commits?path=${resolvedPath}`;
+const commitsURL = `https://github.com/gfidder/create-t3nuxt-app/commits/next/${resolvedPath}`;
 type Commit = {
   author: {
     id: string;
