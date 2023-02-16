@@ -7,10 +7,17 @@ import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
 export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
   const usingPrisma = packages?.prisma.inUse;
+  const devDeps: AvailableDependencies[] = ["@sidebase/nuxt-auth"];
   const deps: AvailableDependencies[] = ["next-auth"];
   if (usingPrisma) {
     deps.push("@next-auth/prisma-adapter");
   }
+
+  addPackageDependency({
+    projectDir,
+    dependencies: devDeps,
+    devMode: true,
+  });
 
   addPackageDependency({
     projectDir,
@@ -20,17 +27,17 @@ export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
-  const apiHandlerFile = "src/pages/api/auth/[...nextauth].ts";
-  const apiHandlerSrc = path.join(extrasDir, apiHandlerFile);
-  const apiHandlerDest = path.join(projectDir, apiHandlerFile);
-
-  const authConfigSrc = path.join(
+  const apiHandlerSrc = path.join(
     extrasDir,
-    "src/server/auth",
-    usingPrisma ? "with-prisma.ts" : "base.ts",
+    "src/server/api/auth",
+    packages?.prisma.inUse ? "with-prisma.ts" : "base.ts",
   );
-  const authConfigDest = path.join(projectDir, "src/server/auth.ts");
+
+  const apiHandlerDest = path.join(projectDir, "server/api/auth/[...].ts");
+
+  const nextAuthDTSSrc = path.join(extrasDir, "src/types/next-auth.d.ts");
+  const nextAuthDTSDest = path.join(projectDir, "types/next-auth.d.ts");
 
   fs.copySync(apiHandlerSrc, apiHandlerDest);
-  fs.copySync(authConfigSrc, authConfigDest);
+  fs.copySync(nextAuthDTSSrc, nextAuthDTSDest);
 };

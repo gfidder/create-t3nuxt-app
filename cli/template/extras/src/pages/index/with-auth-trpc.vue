@@ -51,6 +51,7 @@ const hello = await $client.example.hello.useQuery({ text: "from tRPC" });
       <p class="showcaseText">
         {{ hello.data ? hello.data.value?.greeting : "Loading tRPC query..." }}
       </p>
+      <AuthShowcase />
     </div>
   </main>
 </template>
@@ -176,7 +177,9 @@ const hello = await $client.example.hello.useQuery({ text: "from tRPC" });
   align-items: center;
   gap: 0.5rem;
 }
+</style>
 
+<style>
 .showcaseText {
   color: white;
   text-align: center;

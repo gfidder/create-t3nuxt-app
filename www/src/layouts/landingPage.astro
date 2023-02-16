@@ -1,9 +1,11 @@
 ---
 import Footer from "../components/footer/footer.astro";
+import Navbar from "../components/navigation/navbar.astro";
 import "../styles/global.css";
 import "../styles/algolia/style.css";
 import "../styles/accessibility.css";
 import HeadCommon from "../components/headCommon.astro";
+import HeadSeo from "../components/headSeo.astro";
 import { SITE } from "../config";
 
 import "@fontsource/inter/variable.css";
@@ -22,6 +24,7 @@ const { isNotFound } = Astro.props;
 <html dir="ltr" lang="en-us" class={`initial ${isNotFound ? "not-found" : ""}`}>
   <head>
     <HeadCommon />
+    <HeadSeo type="website" />
     <title>{SITE.title}</title>
 
     <script is:inline>
@@ -42,6 +45,7 @@ const { isNotFound } = Astro.props;
     <div
       class="relative before:pointer-events-none before:absolute before:inset-0 before:block before:h-full before:w-full before:bg-[url('/images/background-pattern.svg')] before:bg-cover before:bg-no-repeat before:opacity-5"
     >
+      <Navbar isNotFound={isNotFound || false} />
       <main id="content">
         <slot />
       </main>
