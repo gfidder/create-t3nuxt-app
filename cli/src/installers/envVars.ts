@@ -1,32 +1,12 @@
 import type { Installer } from "~/installers/index.js";
 import path from "path";
 import fs from "fs-extra";
-import { PKG_ROOT } from "~/const.js";
 
 export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
 
   const envContent = getEnvContent(!!usingAuth, !!usingPrisma);
-
-  const envFile =
-    usingAuth && usingPrisma
-      ? "with-auth-prisma.mjs"
-      : usingAuth
-      ? "with-auth.mjs"
-      : usingPrisma
-      ? "with-prisma.mjs"
-      : "";
-
-  if (envFile !== "") {
-    const envSchemaSrc = path.join(
-      PKG_ROOT,
-      "template/extras/src/env",
-      envFile,
-    );
-    const envSchemaDest = path.join(projectDir, "src/env.mjs");
-    fs.copySync(envSchemaSrc, envSchemaDest);
-  }
 
   const envDest = path.join(projectDir, ".env");
   const envExampleDest = path.join(projectDir, ".env.example");
@@ -57,7 +37,7 @@ DATABASE_URL="file:./db.sqlite"
 # openssl rand -base64 32
 # https://next-auth.js.org/configuration/options#secret
 # NEXTAUTH_SECRET=""
-NEXTAUTH_URL="http://localhost:3000"
+AUTH_ORIGIN="http://localhost:3000"
 # Next Auth Discord Provider
 DISCORD_CLIENT_ID=""
 DISCORD_CLIENT_SECRET=""
