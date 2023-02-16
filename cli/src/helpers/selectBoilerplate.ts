@@ -76,15 +76,23 @@ export const selectNuxtConfigFile = ({
 
   const usingTRPC = packages.trpc.inUse;
   const usingTw = packages.tailwind.inUse;
-  // const usingAuth = packages.nextAuth.inUse;
+  const usingAuth = packages.nextAuth.inUse;
 
   let nuxtConfig = "";
-  if (usingTw && usingTRPC) {
+  if (usingTw && usingTRPC && usingAuth) {
+    nuxtConfig = "with-auth-trpc-tw.ts";
+  } else if (usingTw && usingTRPC && !usingAuth) {
     nuxtConfig = "with-trpc-tw.ts";
-  } else if (usingTw && !usingTRPC) {
+  } else if (usingTw && !usingTRPC && usingAuth) {
+    nuxtConfig = "with-auth-tw.ts";
+  } else if (usingTw && !usingTRPC && !usingAuth) {
     nuxtConfig = "with-tw.ts";
-  } else if (!usingTw && usingTRPC) {
+  } else if (!usingTw && usingTRPC && usingAuth) {
+    nuxtConfig = "with-auth-trpc.ts";
+  } else if (!usingTw && usingTRPC && !usingAuth) {
     nuxtConfig = "with-trpc.ts";
+  } else if (!usingTw && !usingTRPC && usingAuth) {
+    nuxtConfig = "with-auth.ts";
   }
 
   if (nuxtConfig !== "") {
