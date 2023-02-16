@@ -15,7 +15,6 @@
  * These allow you to access things like the database, the session, etc, when processing a request
  */
 import type { H3Event } from "h3";
-import { getServerSession } from "#auth";
 
 /** Replace this with an object if you want to pass things to createContextInner */
 type CreateContextOptions = Record<string, never>;

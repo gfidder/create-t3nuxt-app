@@ -1,10 +1,10 @@
 import { createNuxtApiHandler } from "trpc-nuxt";
 import { appRouter } from "~~/server/trpc/root";
-import { createContext } from "~~/server/trpc/context";
+import { createTRPCContext } from "~~/server/trpc/trpc";
 
 export default createNuxtApiHandler({
   router: appRouter,
-  createContext,
+  createContext: createTRPCContext,
   onError:
     process.env.NODE_ENV === "development"
       ? ({ path, error }) => {
