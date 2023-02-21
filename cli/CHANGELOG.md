@@ -1,5 +1,11 @@
 # create-t3nuxt-app
 
+## 0.1.1
+
+### Patch Changes
+
+- 73f2c76: improve developer experience by adding dependencies to cli
+
 ## 0.1.0
 
 ### Minor Changes
