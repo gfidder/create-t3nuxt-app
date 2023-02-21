@@ -3,8 +3,8 @@ import type { MarkdownHeading } from "astro";
 import type { Frontmatter } from "../../config";
 // import type { Frontmatter, KnownLanguageCode } from "../../config";
 import OutdatedDocsBanner from "./outdatedDocsBanner.astro";
-// import BreadCrumbs from "./breadCrumbs";
-// import Pagination from "./pagination.astro";
+import BreadCrumbs from "./breadCrumbs.vue";
+import Pagination from "./pagination.astro";
 // import OnThisPageLinks from "../navigation/OnThisPageLinks";
 // import { getIsRtlFromLangCode } from "../../languages";
 
@@ -23,7 +23,7 @@ const [_1, _2, lang] = path.split("/");
 <article id="article" class="flex w-full max-w-screen-lg flex-col">
   {lang && lang !== "en" && <OutdatedDocsBanner path={path} />}
   <div class="h-10">
-    <!-- <BreadCrumbs client:only /> -->
+    <BreadCrumbs client:only />
   </div>
   <!-- <OnThisPageLinks
     client:media="(max-width: 1024px)"
@@ -49,4 +49,4 @@ const [_1, _2, lang] = path.split("/");
     </article>
   </section>
 </article>
-<!-- <Pagination /> -->
+<Pagination />

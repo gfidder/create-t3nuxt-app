@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
@@ -8,9 +7,10 @@ import remarkCodeTitles from "remark-code-titles";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import sitemap from "@astrojs/sitemap";
-/**
- * @link https://astro.build/config
- */
+/** @link https://astro.build/config */
+import vue from "@astrojs/vue";
+
+// https://astro.build/config
 export default defineConfig({
   site: `https://create.t3.gg`,
   markdown: {
@@ -46,12 +46,16 @@ export default defineConfig({
     extendDefaultPlugins: true,
   },
   integrations: [
-    react(),
-    tailwind({ config: { applyBaseStyles: false } }),
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
     image({
       serviceEntryPoint: "@astrojs/image/sharp",
     }),
     sitemap(),
     mdx(),
+    vue(),
   ],
 });
