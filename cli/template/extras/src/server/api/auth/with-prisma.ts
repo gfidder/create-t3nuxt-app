@@ -1,5 +1,7 @@
 import { NuxtAuthHandler } from "#auth";
 import DiscordProvider from "next-auth/providers/discord";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { prisma } from "~~/server/db";
 
 export default NuxtAuthHandler({
   secret: process.env.NEXTAUTH_SECRET,
@@ -13,6 +15,7 @@ export default NuxtAuthHandler({
       return session;
     },
   },
+  adapter: PrismaAdapter(prisma),
   providers: [
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     DiscordProvider.default({
