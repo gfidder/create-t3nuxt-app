@@ -5,7 +5,7 @@
 export const dependencyVersionMap = {
   // NextAuth.js
   "@sidebase/nuxt-auth": "^0.4.1",
-  "next-auth": "^4.18.8",
+  "next-auth": "4.18.8",
   "@next-auth/prisma-adapter": "^1.0.5",
 
   // Prisma
@@ -25,7 +25,7 @@ export const dependencyVersionMap = {
   "@trpc/client": "^10.9.0",
   "@trpc/server": "^10.9.0",
   "trpc-nuxt": "^0.5.0",
-  superjson: "1.12.2",
+  superjson: "^1.12.2",
   zod: "^3.20.2",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;
