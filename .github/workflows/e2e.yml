@@ -25,8 +25,7 @@ jobs:
         trpc: ["true", "false"]
         tailwind: ["true", "false"]
         nextAuth: ["true", "false"]
-        # prisma: ["true", "false"]
-        prisma: ["false"]
+        prisma: ["true", "false"]
 
     name: "Build and Start T3 App ${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}"
     steps:

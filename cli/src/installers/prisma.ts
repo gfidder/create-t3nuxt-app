@@ -1,9 +1,9 @@
-import type { PackageJson } from "type-fest";
 import type { Installer } from "~/installers/index.js";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "~/const.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
+import { addScriptDependency } from "~/utils/addScriptDependency.js";
 
 export const prismaInstaller: Installer = ({ projectDir, packages }) => {
   addPackageDependency({
@@ -17,6 +17,11 @@ export const prismaInstaller: Installer = ({ projectDir, packages }) => {
     devMode: false,
   });
 
+  addScriptDependency({
+    projectDir,
+    script: "prisma generate",
+  });
+
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
   const schemaSrc = path.join(
@@ -27,17 +32,8 @@ export const prismaInstaller: Installer = ({ projectDir, packages }) => {
   const schemaDest = path.join(projectDir, "prisma/schema.prisma");
 
   const clientSrc = path.join(extrasDir, "src/server/db.ts");
-  const clientDest = path.join(projectDir, "src/server/db.ts");
-
-  // add postinstall script to package.json
-  const packageJsonPath = path.join(projectDir, "package.json");
-
-  const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
-  packageJsonContent.scripts!.postinstall = "prisma generate";
+  const clientDest = path.join(projectDir, "server/db.ts");
 
   fs.copySync(schemaSrc, schemaDest);
   fs.copySync(clientSrc, clientDest);
-  fs.writeJSONSync(packageJsonPath, packageJsonContent, {
-    spaces: 2,
-  });
 };
