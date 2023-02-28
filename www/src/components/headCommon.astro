@@ -1,3 +1,10 @@
+---
+const path = Object.entries(Astro.params).reduce(
+  (acc, [key, value]) => acc.replace(value as string, `[${key}]`),
+  Astro.url.pathname,
+);
+---
+
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
@@ -8,3 +15,81 @@
 <link rel="sitemap" href="/sitemap.xml" />
 
 <script defer src="/_vercel/insights/script.js"></script>
+
+<web-vitals-data data-path={path}></web-vitals-data>
+
+<script>
+  // Based on https://vercel.com/docs/concepts/analytics/api
+
+  import type { Metric } from "web-vitals";
+  import { onCLS, onFCP, onFID, onLCP, onTTFB } from "web-vitals";
+
+  const vitalsUrl = "https://vitals.vercel-analytics.com/v1/vitals";
+  const analyticsId = import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID as string;
+  const dataEl = document.querySelector<HTMLElement>("web-vitals-data");
+
+  if (analyticsId) {
+    webVitals({
+      analyticsId,
+      path: dataEl?.dataset.path || location.pathname,
+    });
+  }
+
+  function getConnectionSpeed(): string {
+    return navigator?.["connection"]?.["effectiveType"] || "";
+  }
+
+  interface VitalsOpts {
+    path: string;
+    analyticsId: string;
+    debug?: boolean;
+  }
+
+  function webVitals(options: VitalsOpts): void {
+    try {
+      onFID((metric) => sendToAnalytics(metric, options));
+      onTTFB((metric) => sendToAnalytics(metric, options));
+      onLCP((metric) => sendToAnalytics(metric, options));
+      onCLS((metric) => sendToAnalytics(metric, options));
+      onFCP((metric) => sendToAnalytics(metric, options));
+    } catch (err) {
+      console.error("[Analytics]", err);
+    }
+  }
+
+  function sendToAnalytics(metric: Metric, options: VitalsOpts) {
+    const body = {
+      dsn: options.analyticsId,
+      id: metric.id,
+      page: options.path,
+      href: location.href,
+      event_name: metric.name,
+      value: metric.value.toString(),
+      speed: getConnectionSpeed(),
+    };
+    if (options.debug) {
+      console.log("[Analytics]", metric.name, JSON.stringify(body, null, 2));
+    }
+    const blob = new Blob([new URLSearchParams(body).toString()], {
+      // This content type is necessary for `sendBeacon`
+      type: "application/x-www-form-urlencoded",
+    });
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(vitalsUrl, blob);
+    } else
+      fetch(vitalsUrl, {
+        body: blob,
+        method: "POST",
+        credentials: "omit",
+        keepalive: true,
+      });
+  }
+</script>
+
+<script>
+  import { inject } from "@vercel/analytics";
+  // @ts-ignore: process.env.NODE_ENV is required by @vercel/analytics internally
+  // so that it can determine the correct path for importing the analytics script
+  globalThis.process = { env: { NODE_ENV: import.meta.env.MODE } };
+  inject();
+</script>

@@ -2,7 +2,7 @@
 module.exports = {
   ...require("../.prettierrc.cjs"),
   plugins: [
-    require.resolve("prettier-plugin-astro"),
+    // require.resolve("prettier-plugin-astro"),
     require.resolve("prettier-plugin-tailwindcss"), // MUST come last
   ],
   pluginSearchDirs: false,

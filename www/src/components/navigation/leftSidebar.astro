@@ -2,7 +2,7 @@
 import { getIsRtlFromUrl } from "../../languages";
 import { Frontmatter, SIDEBAR } from "../../config";
 // import { Frontmatter, SIDEBAR, SIDEBAR_HEADER_MAP } from "../../config";
-// import Search from "./Search";
+import Search from "./Search.vue";
 
 export interface Props {
   frontmatter?: Frontmatter;
@@ -52,7 +52,7 @@ let sidebar: Record<
 ---
 
 <div class="mx-auto ml--40 mb-6 w-full px-6 md:ml-0 md:hidden md:px-8">
-  <!-- <Search isLanding={isLanding} client:idle /> -->
+  <Search isLanding={isLanding} client:idle />
 </div>
 <div
   dir="ltr"

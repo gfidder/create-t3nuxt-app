@@ -96,6 +96,7 @@ importers:
       '@astrojs/tailwind': ^3.0.1
       '@astrojs/vue': ^2.0.1
       '@docsearch/css': ^3.3.3
+      '@docsearch/js': '3'
       '@docsearch/react': ^3.3.3
       '@fontsource/inter': ^4.5.15
       '@fontsource/jetbrains-mono': ^4.5.12
@@ -124,6 +125,7 @@ importers:
       treeify: ^1.1.0
       typescript: ^4.9.5
       vue: ^3.2.30
+      web-vitals: ^3.1.1
     dependencies:
       '@algolia/client-search': 4.14.3
       '@astrojs/image': 0.14.1_astro@2.0.7+sharp@0.31.3
@@ -131,6 +133,7 @@ importers:
       '@astrojs/sitemap': 1.0.1
       '@astrojs/vue': 2.0.1_astro@2.0.7+vue@3.2.47
       '@docsearch/css': 3.3.3
+      '@docsearch/js': 3.3.3_2r467mdhb7mblpaox4bg7fatdi
       '@docsearch/react': 3.3.3_2r467mdhb7mblpaox4bg7fatdi
       '@fontsource/inter': 4.5.15
       '@fontsource/jetbrains-mono': 4.5.12
@@ -143,6 +146,7 @@ importers:
       tailwind-scrollbar: 2.1.0_tailwindcss@3.2.4
       treeify: 1.1.0
       vue: 3.2.47
+      web-vitals: 3.1.1
     devDependencies:
       '@astrojs/tailwind': 3.0.1_gj5idc4fqpyteameornnqjyr2i
       '@types/node': 18.13.0
@@ -952,6 +956,18 @@ packages:
 
   /@docsearch/css/3.3.3:
     resolution: {integrity: sha512-6SCwI7P8ao+se1TUsdZ7B4XzL+gqeQZnBc+2EONZlcVa0dVrk0NjETxozFKgMv0eEGH8QzP1fkN+A1rH61l4eg==}
+    dev: false
+
+  /@docsearch/js/3.3.3_2r467mdhb7mblpaox4bg7fatdi:
+    resolution: {integrity: sha512-2xAv2GFuHzzmG0SSZgf8wHX0qZX8n9Y1ZirKUk5Wrdc+vH9CL837x2hZIUdwcPZI9caBA+/CzxsS68O4waYjUQ==}
+    dependencies:
+      '@docsearch/react': 3.3.3_2r467mdhb7mblpaox4bg7fatdi
+      preact: 10.13.0
+    transitivePeerDependencies:
+      - '@algolia/client-search'
+      - '@types/react'
+      - react
+      - react-dom
     dev: false
 
   /@docsearch/react/3.3.3_2r467mdhb7mblpaox4bg7fatdi:
@@ -7585,6 +7601,10 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.0.2
 
+  /preact/10.13.0:
+    resolution: {integrity: sha512-ERdIdUpR6doqdaSIh80hvzebHB7O6JxycOhyzAeLEchqOq/4yueslQbfnPwXaNhAYacFTyCclhwkEbOumT0tHw==}
+    dev: false
+
   /prebuild-install/7.1.1:
     resolution: {integrity: sha512-jAXscXWMcCK8GgCoHOfIr0ODh5ai8mj63L2nWrjuAgXE6tDyYGnx4/8o/rCgU+B4JSyZBKbeZqzhtwtC3ovxjw==}
     engines: {node: '>=10'}
@@ -9682,6 +9702,10 @@ packages:
     resolution: {integrity: sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==}
     engines: {node: '>= 8'}
     dev: true
+
+  /web-vitals/3.1.1:
+    resolution: {integrity: sha512-qvllU+ZeQChqzBhZ1oyXmWsjJ8a2jHYpH8AMaVuf29yscOPZfTQTjQFRX6+eADTdsDE8IanOZ0cetweHMs8/2A==}
+    dev: false
 
   /webidl-conversions/3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
