@@ -1,23 +1,22 @@
 ---
 import type { MarkdownHeading } from "astro";
-import type { Frontmatter } from "../../config";
-// import type { Frontmatter, KnownLanguageCode } from "../../config";
+import type { Frontmatter, KnownLanguageCode } from "../../config";
 import OutdatedDocsBanner from "./outdatedDocsBanner.astro";
 import BreadCrumbs from "./breadCrumbs.vue";
 import Pagination from "./pagination.astro";
-// import OnThisPageLinks from "../navigation/OnThisPageLinks";
-// import { getIsRtlFromLangCode } from "../../languages";
+import OnThisPageLinks from "../navigation/OnThisPageLinks.vue";
+import { getIsRtlFromLangCode } from "../../languages";
 
 export interface Props {
   frontmatter: Frontmatter;
   path: string;
   headings: MarkdownHeading[];
 }
-const { frontmatter, path } = Astro.props;
-// const { frontmatter, path, headings } = Astro.props;
+// const { frontmatter, path } = Astro.props;
+const { frontmatter, path, headings } = Astro.props;
 const title = frontmatter.title;
 const [_1, _2, lang] = path.split("/");
-// const isRtl = getIsRtlFromLangCode((lang || "en") as KnownLanguageCode);
+const isRtl = getIsRtlFromLangCode((lang || "en") as KnownLanguageCode);
 ---
 
 <article id="article" class="flex w-full max-w-screen-lg flex-col">
@@ -25,12 +24,12 @@ const [_1, _2, lang] = path.split("/");
   <div class="h-10">
     <BreadCrumbs client:only />
   </div>
-  <!-- <OnThisPageLinks
+  <OnThisPageLinks
     client:media="(max-width: 1024px)"
     headings={headings}
     title={title}
     isRtl={isRtl}
-  /> -->
+  />
   <section class="w-full">
     <h1
       id="overview"

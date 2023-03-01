@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { ALGOLIA } from "../../config";
+// import { ALGOLIA } from "../../config";
 import "../../styles/algolia/style.css";
-import docsearch from "@docsearch/js";
+// import docsearch from "@docsearch/js";
 import {
   TransitionRoot,
   TransitionChild,
@@ -13,12 +13,12 @@ import {
 
 import clsx from "clsx";
 
-docsearch({
-  container: "#docsearch",
-  appId: "R2IYF7ETH7",
-  apiKey: "599cec31baffa4868cae4e79f180729b",
-  indexName: "docsearch",
-});
+// docsearch({
+//   container: "#docsearch",
+//   appId: "R2IYF7ETH7",
+//   apiKey: "599cec31baffa4868cae4e79f180729b",
+//   indexName: "docsearch",
+// });
 
 defineProps<{
   isLanding: boolean;

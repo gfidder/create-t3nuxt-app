@@ -1,7 +1,7 @@
 ---
 import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
 import GithubIcon from "./githubIcon.astro";
-import Search from "./Search.vue";
+// import Search from "./Search.vue";
 import LanguageSelect from "./LanguageSelect.vue";
 import SidebarToggle from "./sidebarToggle.astro";
 import ThemeToggleButton from "./themeToggleButton.astro";
@@ -97,7 +97,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
         <SidebarToggle isLanding={isLanding} />
       </div>
       <div class="hidden w-full max-w-xs rounded-lg md:block">
-        <Search isLanding={isLanding} client:load />
+        <!-- <Search isLanding={isLanding} client:load /> -->
       </div>
     </div>
   </div>
