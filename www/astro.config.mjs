@@ -12,7 +12,7 @@ import vue from "@astrojs/vue";
 
 // https://astro.build/config
 export default defineConfig({
-  site: `https://create.t3.gg`,
+  site: `https://create-t3nuxt-app-www.vercel.app`,
   markdown: {
     remarkPlugins: [remarkCodeTitles],
     rehypePlugins: [

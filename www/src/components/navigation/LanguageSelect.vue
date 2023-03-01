@@ -35,7 +35,7 @@ const isRTL = getIsRtlFromLangCode(props.language);
         >
           <svg
             viewBox="0 0 88.6 77.3"
-            className="h-6 w-6 text-slate-900 dark:text-t3-purple-100"
+            class="h-6 w-6 text-slate-900 dark:text-t3-purple-100"
             role="img"
           >
             <path
@@ -54,6 +54,7 @@ const isRTL = getIsRtlFromLangCode(props.language);
           enterToClass="transform opacity-100 -translate-y-0"
         >
           <ListboxOptions
+            v-slot="{ active, selected }"
             dir="ltr"
             :class="
               clsx(
@@ -62,8 +63,31 @@ const isRTL = getIsRtlFromLangCode(props.language);
               )
             "
           >
-            <ListboxOption v-for="(name, code) in KNOWN_LANGUAGES" :key="code">
-              <span>{{ name }}</span>
+            <ListboxOption
+              v-for="(name, code) in KNOWN_LANGUAGES"
+              :key="code"
+              :class="
+                clsx(
+                  'focus-none relative cursor-pointer bg-t3-purple-200/50 py-2 px-4 text-slate-900 outline-none hover:bg-t3-purple-300/75 dark:bg-t3-purple-200/10 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/20',
+                  {
+                    'bg-t3-purple-400/75 dark:bg-t3-purple-400/20': selected,
+                    'bg-t3-purple-300/75 dark:bg-t3-purple-200/20': active,
+                  },
+                )
+              "
+              :value="code"
+            >
+              <span
+                :class="
+                  clsx(
+                    'truncate',
+                    selected && 'font-medium',
+                    !selected && 'font-normal',
+                  )
+                "
+              >
+                {{ name }}
+              </span>
             </ListboxOption>
           </ListboxOptions>
         </Transition>
