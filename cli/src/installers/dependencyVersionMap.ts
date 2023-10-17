@@ -24,8 +24,8 @@ export const dependencyVersionMap = {
   // tRPC
   "@trpc/client": "^10.9.0",
   "@trpc/server": "^10.9.0",
-  "trpc-nuxt": "^0.5.0",
-  superjson: "^1.12.2",
+  "trpc-nuxt": "^0.10.12",
+  superjson: "^2.0.0",
   zod: "^3.20.2",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;
