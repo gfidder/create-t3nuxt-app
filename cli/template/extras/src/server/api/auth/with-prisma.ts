@@ -1,7 +1,7 @@
-import { NuxtAuthHandler } from "#auth";
-import DiscordProvider from "next-auth/providers/discord";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { NuxtAuthHandler } from "#auth";
 import { prisma } from "~~/server/db";
+import DiscordProvider from "next-auth/providers/discord";
 
 export default NuxtAuthHandler({
   secret: process.env.NEXTAUTH_SECRET,

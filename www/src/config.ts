@@ -13,7 +13,7 @@ export const OPEN_GRAPH = {
 };
 
 // This is the type of the frontmatter you put in the docs markdown files.
-export type Frontmatter = {
+export interface Frontmatter {
   title: string;
   description: string;
   layout: string;
@@ -22,7 +22,7 @@ export type Frontmatter = {
   ogLocale?: string;
   lang?: KnownLanguageCode;
   isMdx?: boolean;
-};
+}
 
 export const KNOWN_LANGUAGES = {
   // Add more languages here
@@ -44,16 +44,17 @@ export const ALGOLIA = {
 
 export type OuterHeaders = "Create T3 Nuxt App" | "Usage" | "Deployment";
 
-export type SidebarItem<TCode extends KnownLanguageCode = KnownLanguageCode> = {
+export interface SidebarItem<
+  TCode extends KnownLanguageCode = KnownLanguageCode,
+> {
   text: string;
   link: `${TCode}/${string}`;
-};
+}
 
 export type SidebarItemLink = SidebarItem["link"];
 
 export type Sidebar = {
   [TCode in KnownLanguageCode]: {
-    // eslint-disable-next-line no-unused-vars
     [THeader in OuterHeaders]?: SidebarItem<TCode>[];
   };
 };

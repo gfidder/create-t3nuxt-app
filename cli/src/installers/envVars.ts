@@ -1,6 +1,7 @@
-import type { Installer } from "~/installers/index.js";
 import path from "path";
 import fs from "fs-extra";
+
+import type { Installer } from "~/installers/index.js";
 
 export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
   const usingAuth = packages?.nextAuth.inUse;

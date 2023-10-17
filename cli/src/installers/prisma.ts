@@ -1,7 +1,8 @@
-import type { Installer } from "~/installers/index.js";
 import path from "path";
 import fs from "fs-extra";
+
 import { PKG_ROOT } from "~/const.js";
+import type { Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 import { addScriptDependency } from "~/utils/addScriptDependency.js";
 
@@ -27,7 +28,7 @@ export const prismaInstaller: Installer = ({ projectDir, packages }) => {
   const schemaSrc = path.join(
     extrasDir,
     "prisma/schema",
-    packages?.nextAuth.inUse ? "with-auth.prisma" : "base.prisma",
+    packages?.nextAuth.inUse ? "with-auth.prisma" : "base.prisma"
   );
   const schemaDest = path.join(projectDir, "prisma/schema.prisma");
 

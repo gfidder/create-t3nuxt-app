@@ -1,7 +1,7 @@
-type Options = {
+interface Options {
   throwIfNotOk?: boolean;
   throwIfNoAuth?: boolean;
-};
+}
 
 /** Helper function to fetch the GitHub API with an auth token to avoid rate limiting. */
 export const fetchGithub = async (url: string, opts: Options) => {

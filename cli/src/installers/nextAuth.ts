@@ -1,9 +1,10 @@
-import type { Installer } from "./index.js";
-import { AvailableDependencies } from "./dependencyVersionMap.js";
 import path from "path";
 import fs from "fs-extra";
+
 import { PKG_ROOT } from "~/const.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
+import { AvailableDependencies } from "./dependencyVersionMap.js";
+import type { Installer } from "./index.js";
 
 export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
   const usingPrisma = packages?.prisma.inUse;
@@ -29,7 +30,7 @@ export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
   const apiHandlerSrc = path.join(
     extrasDir,
     "src/server/api/auth",
-    packages?.prisma.inUse ? "with-prisma.ts" : "base.ts",
+    packages?.prisma.inUse ? "with-prisma.ts" : "base.ts"
   );
 
   const apiHandlerDest = path.join(projectDir, "server/api/auth/[...].ts");

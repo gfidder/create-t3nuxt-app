@@ -1,13 +1,15 @@
 #!/usr/bin/env node
-
-import type { PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
+import type { PackageJson } from "type-fest";
+
 import { runCli } from "./cli/index.js";
 import { createProject } from "./helpers/createProject.js";
 import { initializeGit } from "./helpers/git.js";
+import { installDependencies } from "./helpers/installDependencies.js";
 import { logNextSteps } from "./helpers/logNextSteps.js";
 import { buildPkgInstallerMap } from "./installers/index.js";
+import { getVersion } from "./utils/getT3Version.js";
 import { logger } from "./utils/logger.js";
 import { parseNameAndPath } from "./utils/parseNameAndPath.js";
 import { renderTitle } from "./utils/renderTitle.js";
@@ -15,8 +17,6 @@ import {
   getNpmVersion,
   renderVersionWarning,
 } from "./utils/renderVersionWarning.js";
-import { installDependencies } from "./helpers/installDependencies.js";
-import { getVersion } from "./utils/getT3Version.js";
 
 type CT3NPackageJson = PackageJson & {
   ct3nMetaData?: {
@@ -48,7 +48,7 @@ const main = async () => {
 
   // Write name to package.json
   const pkgJson = fs.readJSONSync(
-    path.join(projectDir, "package.json"),
+    path.join(projectDir, "package.json")
   ) as CT3NPackageJson;
   pkgJson.name = scopedAppName;
   pkgJson.ct3nMetaData = { initVersion: getVersion() };
@@ -75,7 +75,7 @@ main().catch((err) => {
     logger.error(err);
   } else {
     logger.error(
-      "An unknown error has occurred. Please open an issue on github with the below:",
+      "An unknown error has occurred. Please open an issue on github with the below:"
     );
     console.log(err);
   }

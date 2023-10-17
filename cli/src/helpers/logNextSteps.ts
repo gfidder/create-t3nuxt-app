@@ -1,5 +1,5 @@
-import type { InstallerOptions } from "~/installers/index.js";
 import { DEFAULT_APP_NAME } from "~/const.js";
+import type { InstallerOptions } from "~/installers/index.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
 
@@ -24,7 +24,7 @@ export const logNextSteps = ({
 
   if (packages?.prisma.inUse) {
     logger.info(
-      `  ${pkgManager === "npm" ? "npx" : pkgManager} prisma db push`,
+      `  ${pkgManager === "npm" ? "npx" : pkgManager} prisma db push`
     );
   }
 

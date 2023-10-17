@@ -9,7 +9,7 @@ export const addScriptDependency = (opts: {
   const { script, projectDir } = opts;
 
   const pkgJson = fs.readJSONSync(
-    path.join(projectDir, "package.json"),
+    path.join(projectDir, "package.json")
   ) as PackageJson;
 
   if (pkgJson.scripts?.postinstall) {

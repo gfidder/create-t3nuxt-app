@@ -1,7 +1,8 @@
-import type { InstallerOptions } from "~/installers/index.js";
 import path from "path";
 import fs from "fs-extra";
+
 import { PKG_ROOT } from "~/const.js";
+import type { InstallerOptions } from "~/installers/index.js";
 
 type SelectBoilerplateProps = Required<
   Pick<InstallerOptions, "projectDir" | "packages">
@@ -45,7 +46,7 @@ export const selectAuthShowcaseFile = ({
 }: SelectBoilerplateProps) => {
   const componentFileDir = path.join(
     PKG_ROOT,
-    "template/extras/src/components/AuthShowcase",
+    "template/extras/src/components/AuthShowcase"
   );
 
   const usingTRPC = packages.trpc.inUse;
@@ -73,7 +74,7 @@ export const selectNuxtConfigFile = ({
 }: SelectBoilerplateProps) => {
   const configFileDir = path.join(
     PKG_ROOT,
-    "template/extras/config/nuxt-config",
+    "template/extras/config/nuxt-config"
   );
 
   const usingTRPC = packages.trpc.inUse;

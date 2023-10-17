@@ -14,14 +14,22 @@
  *
  * These allow you to access things like the database, the session, etc, when processing a request
  */
-import type { H3Event } from "h3";
-import { getServerSession } from "#auth";
-import { type Session } from "next-auth";
-import { prisma } from "~~/server/db";
 
-type CreateContextOptions = {
+/**
+ * 2. INITIALIZATION
+ *
+ * This is where the tRPC API is initialized, connecting the context and transformer.
+ */
+import { initTRPC, TRPCError } from "@trpc/server";
+import { getServerSession } from "#auth";
+import { prisma } from "~~/server/db";
+import type { H3Event } from "h3";
+import { type Session } from "next-auth";
+import superjson from "superjson";
+
+interface CreateContextOptions {
   session: Session | null;
-};
+}
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use it, you can export
@@ -54,14 +62,6 @@ export const createTRPCContext = async (event: H3Event) => {
     session,
   });
 };
-
-/**
- * 2. INITIALIZATION
- *
- * This is where the tRPC API is initialized, connecting the context and transformer.
- */
-import { initTRPC, TRPCError } from "@trpc/server";
-import superjson from "superjson";
 
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
