@@ -30,7 +30,8 @@
     "dev": "tsup --watch",
     "clean": "rm -rf dist .turbo node_modules",
     "start": "node dist/index.js",
-    "lint": "eslint src --report-unused-disable-directives",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "pnpm lint --fix",
     "format": "prettier --write **/*.{cjs,mjs,ts,tsx,md,json,vue} --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern",
     "format:check": "prettier --check **/*.{cjs,mjs,ts,tsx,md,json,vue} --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern",
     "release": "changeset version",
@@ -58,7 +59,7 @@
     "@types/fs-extra": "^11.0.1",
     "@types/gradient-string": "^1.1.2",
     "@types/inquirer": "^9.0.3",
-    "@types/node": "^18.13.0",
+    "@types/node": "^18.18.5",
     "eslint-plugin-isaacscript": "^2.3.2",
     "eslint-plugin-nuxt": "^4.0.0",
     "next-auth": "4.18.8",
@@ -70,7 +71,7 @@
     "trpc-nuxt": "^0.5.0",
     "tsup": "^7.2.0",
     "type-fest": "^3.5.6",
-    "typescript": "^5.1.6",
+    "typescript": "^5.0.4",
     "vite-plugin-eslint": "^1.8.1",
     "zod": "^3.20.2"
   }

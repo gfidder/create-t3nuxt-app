@@ -1,7 +1,7 @@
 /** @type {import("eslint").Linter.Config} */
 const config = {
   parserOptions: {
-    extraFileExtensions: [".astro"],
+    extraFileExtensions: [".vue"],
   },
 };
 

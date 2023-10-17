@@ -1,4 +1,5 @@
 import gradient from "gradient-string";
+
 import { TITLE_TEXT } from "~/const.js";
 import { getUserPkgManager } from "./getUserPkgManager.js";
 

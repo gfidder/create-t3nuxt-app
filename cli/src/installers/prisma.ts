@@ -1,7 +1,8 @@
-import type { Installer } from "~/installers/index.js";
 import path from "path";
 import fs from "fs-extra";
+
 import { PKG_ROOT } from "~/const.js";
+import type { Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 import { addScriptDependency } from "~/utils/addScriptDependency.js";
 

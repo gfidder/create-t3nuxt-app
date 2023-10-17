@@ -1,9 +1,10 @@
-import type { Installer } from "./index.js";
-import { AvailableDependencies } from "./dependencyVersionMap.js";
 import path from "path";
 import fs from "fs-extra";
+
 import { PKG_ROOT } from "~/const.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
+import { AvailableDependencies } from "./dependencyVersionMap.js";
+import type { Installer } from "./index.js";
 
 export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
   const usingPrisma = packages?.prisma.inUse;

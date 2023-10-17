@@ -1,6 +1,7 @@
 ---
-import { getIsRtlFromUrl } from "../../languages";
 import { Frontmatter, SIDEBAR } from "../../config";
+import { getIsRtlFromUrl } from "../../languages";
+
 // import { Frontmatter, SIDEBAR, SIDEBAR_HEADER_MAP } from "../../config";
 // import Search from "./Search";
 
@@ -14,7 +15,7 @@ const isLanding = currentPage === "/" || !!isNotFound;
 const hasTrailing = currentPage.endsWith("/");
 const currentPageMatch = currentPage.slice(
   1,
-  hasTrailing ? -1 : currentPage.length
+  hasTrailing ? -1 : currentPage.length,
 );
 const isRtl = getIsRtlFromUrl(currentPage);
 const langCode = frontmatter?.lang ?? "en";

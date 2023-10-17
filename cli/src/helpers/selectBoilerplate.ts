@@ -1,7 +1,8 @@
-import type { InstallerOptions } from "~/installers/index.js";
 import path from "path";
 import fs from "fs-extra";
+
 import { PKG_ROOT } from "~/const.js";
+import type { InstallerOptions } from "~/installers/index.js";
 
 type SelectBoilerplateProps = Required<
   Pick<InstallerOptions, "projectDir" | "packages">

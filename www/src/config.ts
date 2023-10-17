@@ -45,7 +45,7 @@ export const ALGOLIA = {
 export type OuterHeaders = "Create T3 Nuxt App" | "Usage" | "Deployment";
 
 export interface SidebarItem<
-  TCode extends KnownLanguageCode = KnownLanguageCode
+  TCode extends KnownLanguageCode = KnownLanguageCode,
 > {
   text: string;
   link: `${TCode}/${string}`;

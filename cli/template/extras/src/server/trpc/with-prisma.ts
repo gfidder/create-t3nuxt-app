@@ -14,9 +14,16 @@
  *
  * These allow you to access things like the database, the session, etc, when processing a request
  */
-import type { H3Event } from "h3";
 
+/**
+ * 2. INITIALIZATION
+ *
+ * This is where the tRPC API is initialized, connecting the context and transformer.
+ */
+import { initTRPC } from "@trpc/server";
 import { prisma } from "~~/server/db";
+import type { H3Event } from "h3";
+import superjson from "superjson";
 
 /** Replace this with an object if you want to pass things to createContextInner */
 type CreateContextOptions = Record<string, never>;
@@ -31,7 +38,7 @@ type CreateContextOptions = Record<string, never>;
  *
  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  */
-const createInnerTRPCContext = (opts: CreateContextOptions) => {
+const createInnerTRPCContext = (_opts: CreateContextOptions) => {
   return {
     prisma,
   };
@@ -43,17 +50,9 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
  *
  * @link https://trpc.io/docs/context
  */
-export const createTRPCContext = async (event: H3Event) => {
+export const createTRPCContext = async (_event: H3Event) => {
   return createInnerTRPCContext({});
 };
-
-/**
- * 2. INITIALIZATION
- *
- * This is where the tRPC API is initialized, connecting the context and transformer.
- */
-import { initTRPC } from "@trpc/server";
-import superjson from "superjson";
 
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,

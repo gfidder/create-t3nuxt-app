@@ -1,5 +1,7 @@
-import type { PkgInstallerMap } from "~/installers/index.js";
 import path from "path";
+
+import type { PkgInstallerMap } from "~/installers/index.js";
+import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { installPackages } from "./installPackages.js";
 import { scaffoldProject } from "./scaffoldProject.js";
 import {
@@ -7,7 +9,6 @@ import {
   selectIndexFile,
   selectNuxtConfigFile,
 } from "./selectBoilerplate.js";
-import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 
 interface CreateProjectOptions {
   projectName: string;

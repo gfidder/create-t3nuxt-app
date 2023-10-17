@@ -41,7 +41,7 @@
   themeToggle!.setAttribute("aria-label", getMessage());
   themeToggle!.setAttribute(
     "value",
-    html.classList.contains("dark") ? "dark" : "light"
+    html.classList.contains("dark") ? "dark" : "light",
   );
   const toggleTheme = (t: "light" | "dark") => {
     localStorage.setItem("theme", t);
