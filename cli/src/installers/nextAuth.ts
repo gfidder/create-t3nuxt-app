@@ -29,7 +29,7 @@ export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
   const apiHandlerSrc = path.join(
     extrasDir,
     "src/server/api/auth",
-    packages?.prisma.inUse ? "with-prisma.ts" : "base.ts",
+    packages?.prisma.inUse ? "with-prisma.ts" : "base.ts"
   );
 
   const apiHandlerDest = path.join(projectDir, "server/api/auth/[...].ts");

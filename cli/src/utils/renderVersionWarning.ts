@@ -13,7 +13,7 @@ export const renderVersionWarning = (npmVersion: string) => {
     logger.warn("  Please report any bugs you encounter.");
   } else if (currentVersion.includes("next")) {
     logger.warn(
-      "  You are running create-t3nuxt-app with the @next tag which is no longer maintained.",
+      "  You are running create-t3nuxt-app with the @next tag which is no longer maintained."
     );
     logger.warn("  Please run the CLI with @latest instead.");
   } else if (currentVersion !== npmVersion) {
@@ -22,7 +22,7 @@ export const renderVersionWarning = (npmVersion: string) => {
       "  Your version:",
       currentVersion + ".",
       "Latest version in the npm registry:",
-      npmVersion,
+      npmVersion
     );
     logger.warn("  Please run the CLI with @latest to get the latest updates.");
   }
@@ -38,9 +38,9 @@ export const renderVersionWarning = (npmVersion: string) => {
  */
 import https from "https";
 
-type DistTagsBody = {
+interface DistTagsBody {
   latest: string;
-};
+}
 
 function checkForLatestVersion(): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -57,7 +57,7 @@ function checkForLatestVersion(): Promise<string> {
           } else {
             reject();
           }
-        },
+        }
       )
       .on("error", () => {
         // logger.error("Unable to check for latest version.");

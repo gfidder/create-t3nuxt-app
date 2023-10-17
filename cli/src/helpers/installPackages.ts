@@ -17,8 +17,8 @@ export const installPackages = (options: InstallPackagesOptions) => {
       pkgOpts.installer(options);
       spinner.succeed(
         chalk.green(
-          `Successfully setup boilerplate for ${chalk.green.bold(name)}`,
-        ),
+          `Successfully setup boilerplate for ${chalk.green.bold(name)}`
+        )
       );
     }
   }

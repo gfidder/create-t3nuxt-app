@@ -4,6 +4,15 @@
     "jsx": "preserve",
     "types": ["@astrojs/image/client"],
     // Skip type checking of external libraries.
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "importsNotUsedAsValues": "preserve"
+  },
+  "include": [
+    "src",
+    "astro.config.mjs",
+    "**/*.js",
+    "**/*.cjs",
+    "**/*.mjs",
+    "./tailwind.config.cjs"
+  ]
 }

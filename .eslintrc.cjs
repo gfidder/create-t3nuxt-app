@@ -1,20 +1,33 @@
 module.exports = {
+  root: true,
   parser: "@typescript-eslint/parser", // Specifies the ESLint parser
   plugins: [
     // Provides extra useful rules:
     // https://github.com/IsaacScript/isaacscript/tree/main/packages/eslint-plugin-isaacscript
     "isaacscript",
+    "import",
   ],
   extends: [
     "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/stylistic-type-checked",
     "plugin:prettier/recommended",
   ],
+  parserOptions: {
+    ecmaVersion: "latest", // Allows for the parsing of modern ECMAScript features
+    sourceType: "module", // Allows for the use of import
+    tsconfigRootDir: __dirname,
+    project: [
+      "./tsconfig.eslint.json",
+      "./cli/tsconfig.eslint.json",
+      "./www/tsconfig.json",
+    ],
+  },
   overrides: [
     {
       extends: [
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
       ],
-      files: ["*.ts", "*.tsx"],
+      files: ["./cli/template/**/*.{ts,vue}"],
       parserOptions: {
         project: "tsconfig.json",
       },
@@ -35,11 +48,6 @@ module.exports = {
       },
     },
   ],
-  parserOptions: {
-    ecmaVersion: "latest", // Allows for the parsing of modern ECMAScript features
-    sourceType: "module", // Allows for the use of import
-    project: "./tsconfig.eslint.json", // Allows for the use of rules which require parserServices to be generated
-  },
   rules: {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs.
     "@typescript-eslint/no-explicit-any": "off",
