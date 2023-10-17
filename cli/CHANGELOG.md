@@ -1,5 +1,16 @@
 # create-t3nuxt-app
 
+## 0.2.0
+
+### Minor Changes
+
+- 5d8a999: Updating to newest version of nuxt
+
+### Patch Changes
+
+- 2fbb2e1: Rolling the verion of trpc-nuxt to latest version
+- 316731a: Updating prisma and prisma client to latest
+
 ## 0.1.1
 
 ### Patch Changes
