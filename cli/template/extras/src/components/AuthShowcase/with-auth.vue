@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data: sessionData, status, signIn, signOut } = useSession();
+const { data: sessionData, status, signIn, signOut } = useAuth();
 const { $client } = useNuxtApp();
 
 const { data: secretMessage } =
