@@ -4,8 +4,8 @@
  */
 export const dependencyVersionMap = {
   // NextAuth.js
-  "@sidebase/nuxt-auth": "^0.4.1",
-  "next-auth": "4.18.8",
+  "@sidebase/nuxt-auth": "^0.5.0",
+  "next-auth": "4.21.1",
   "@next-auth/prisma-adapter": "^1.0.5",
 
   // Prisma
