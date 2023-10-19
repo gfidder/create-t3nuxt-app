@@ -1,5 +1,12 @@
 # create-t3nuxt-app
 
+## 0.2.1
+
+### Patch Changes
+
+- 5b7ad1f: Updating version of NuxtAuth to 0.5.0
+- 3fe6b8c: Updating tailwind to latest version
+
 ## 0.2.0
 
 ### Minor Changes
