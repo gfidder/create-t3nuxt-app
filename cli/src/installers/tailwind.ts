@@ -15,7 +15,6 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
       "prettier",
       "prettier-plugin-tailwindcss",
       "@types/prettier",
-      "@nuxtjs/tailwindcss",
     ],
     devMode: true,
   });
